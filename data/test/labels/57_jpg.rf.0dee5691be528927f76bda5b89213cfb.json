@@ -1,0 +1,20 @@
+[
+    {
+        "label": "tear",
+        "coordinates": {
+            "x": 307.5,
+            "y": 251.88,
+            "width": 587.5,
+            "height": 113.75
+        }
+    },
+    {
+        "label": "tear",
+        "coordinates": {
+            "x": 315,
+            "y": 577.5,
+            "width": 587.5,
+            "height": 87.5
+        }
+    }
+]

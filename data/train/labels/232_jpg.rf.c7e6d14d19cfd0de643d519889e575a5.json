@@ -1,0 +1,29 @@
+[
+    {
+        "label": "tear",
+        "coordinates": {
+            "x": 123.13,
+            "y": 72.5,
+            "width": 213.75,
+            "height": 90
+        }
+    },
+    {
+        "label": "tear",
+        "coordinates": {
+            "x": 230.63,
+            "y": 486.88,
+            "width": 153.75,
+            "height": 88.75
+        }
+    },
+    {
+        "label": "tear",
+        "coordinates": {
+            "x": 423.75,
+            "y": 518.13,
+            "width": 110,
+            "height": 108.75
+        }
+    }
+]
