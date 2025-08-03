@@ -28,14 +28,37 @@ const secondaryVariant = {
 export const FileUpload = ({
   onChange,
 }: {
-  onChange?: (files: File[]) => void;
+  onChange?: (resultUrl: string) => void;
 }) => {
   const [files, setFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFileChange = (newFiles: File[]) => {
-    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
-    onChange && onChange(newFiles);
+  const handleFileChange = async (newFiles: File[]) => {
+    if (newFiles.length === 0) return;
+
+    const file = newFiles[0];
+    setFiles([file]); // show only latest file
+
+    // 🔁 Upload to Flask YOLO backend
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const res = await fetch('http://localhost:5000/predict', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error('Upload failed');
+
+      const blob = await res.blob();
+      const resultUrl = URL.createObjectURL(blob);
+
+      // Pass the result back to App
+      onChange && onChange(resultUrl);
+    } catch (err) {
+      console.error('Upload failed:', err);
+    }
   };
 
   const handleClick = () => {
